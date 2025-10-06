@@ -47,6 +47,14 @@ const main = async () => {
   const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
   if (!ctx) throw new Error('Unable to get 2D rendering context');
 
+  const stream = canvas.captureStream(0);
+  const [track] = stream.getVideoTracks() as CanvasCaptureMediaStreamTrack[];
+  track.requestFrame();
+
+  video.srcObject = new MediaStream([track]);
+  video.preload = 'metadata';
+  video.load();     
+
   const buttonColors = document.getElementsByClassName('button-color') as HTMLCollectionOf<HTMLButtonElement>;
   if (buttonColors.length < 1) throw new Error('No color buttons found');
 
@@ -57,12 +65,7 @@ const main = async () => {
       try {
         ctx.fillStyle = currentColor;
         ctx.fillRect(0, 0, width, height);
-    
-        const stream = canvas.captureStream(0);
-        const [track] = stream.getVideoTracks() as CanvasCaptureMediaStreamTrack[];
         track.requestFrame();
-    
-        video.srcObject = new MediaStream([track]);
       } catch (err) {
         alert(`Error updating test video:\n\n${err}`);
       }
