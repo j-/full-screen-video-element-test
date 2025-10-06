@@ -92,3 +92,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.grid {
+  background: #eee url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'><path fill='%23fff' d='M0 0H1V2H2V1H0Z'/></svg>") 0 0/1rem;
+}
