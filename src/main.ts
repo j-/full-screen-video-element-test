@@ -66,6 +66,7 @@ const main = async () => {
         ctx.fillStyle = currentColor;
         ctx.fillRect(0, 0, width, height);
         track.requestFrame();
+        video.play();
       } catch (err) {
         alert(`Error updating test video:\n\n${err}`);
       }
