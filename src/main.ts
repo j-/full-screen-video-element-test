@@ -3,14 +3,14 @@ const height = 100;
 
 const main = async () => {
   if (!document.fullscreenEnabled) {
-    throw new Error('`document.fullscreenEnabled` was `' + document.fullscreenEnabled +  '`, expected `true`.');
+    alert('Warning: `document.fullscreenEnabled` was `' + document.fullscreenEnabled +  '`, expected `true`.');
   }
   
   const video = document.getElementById('video') as HTMLVideoElement;
   if (!video) throw new Error('No video element found');
   
   if (typeof video.requestFullscreen !== 'function') {
-    throw new Error('`typeof video.requestFullscreen` was `' + JSON.stringify(typeof video.requestFullscreen) +  '`, expected `"function""`.');
+    alert('Warning: `typeof video.requestFullscreen` was `' + JSON.stringify(typeof video.requestFullscreen) +  '`, expected `"function""`.');
   }
   
   const buttonFullscreen = document.getElementById('button-fullscreen') as HTMLButtonElement;
