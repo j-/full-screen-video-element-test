@@ -19,7 +19,8 @@ const main = async () => {
   buttonRequestFullscreen.addEventListener('click', async (e) => {
     e.preventDefault();
     try {
-      await video.requestFullscreen();
+      const result = await video.requestFullscreen();
+      alert('Called successfully, result: ' + JSON.stringify(result));
     } catch (err) {
       alert(`Error requesting full screen:\n\n${err}`);
     }
@@ -28,12 +29,13 @@ const main = async () => {
   const buttonWebkitEnterFullscreen = document.getElementById('button-webkit-enter-fullscreen') as HTMLButtonElement;
   if (!buttonWebkitEnterFullscreen) throw new Error('No fullscreen button found');
 
-  buttonWebkitEnterFullscreen.addEventListener('click', async (e) => {
+  buttonWebkitEnterFullscreen.addEventListener('click', (e) => {
     e.preventDefault();
     try {
-      await (video as HTMLVideoElement & {
-        webkitEnterFullscreen: () => Promise<void>;
+      const result = (video as HTMLVideoElement & {
+        webkitEnterFullscreen: () => void;
       }).webkitEnterFullscreen();
+      alert('Called successfully, result: ' + JSON.stringify(result));
     } catch (err) {
       alert(`Error entering full screen (webkit):\n\n${err}`);
     }
