@@ -2,7 +2,7 @@
 
 ${n}`)}});const u=document.getElementById("button-webkit-enter-fullscreen");if(!u)throw new Error("No fullscreen button found");u.addEventListener("click",s=>{s.preventDefault();try{const n=r.webkitEnterFullscreen();alert("Called successfully, result: "+JSON.stringify(n))}catch(n){alert(`Error entering full screen (webkit):
 
-${n}`)}});const l=document.getElementById("canvas");if(!l)throw new Error("No canvas element found");const e=l.getContext("2d");if(!e)throw new Error("Unable to get 2D rendering context");const t=l.captureStream(0),[o]=t.getVideoTracks();o.requestFrame(),r.srcObject=new MediaStream([o]),r.preload="metadata",r.load();const i=document.getElementsByClassName("button-color");if(i.length<1)throw new Error("No color buttons found");for(const s of i)s.addEventListener("click",async n=>{n.preventDefault();const a=n.currentTarget.value;try{e.fillStyle=a,e.fillRect(0,0,f,m),o.requestFrame()}catch(d){alert(`Error updating test video:
+${n}`)}});const l=document.getElementById("canvas");if(!l)throw new Error("No canvas element found");const e=l.getContext("2d");if(!e)throw new Error("Unable to get 2D rendering context");const t=l.captureStream(0),[o]=t.getVideoTracks();o.requestFrame(),r.srcObject=new MediaStream([o]),r.preload="metadata",r.load();const i=document.getElementsByClassName("button-color");if(i.length<1)throw new Error("No color buttons found");for(const s of i)s.addEventListener("click",async n=>{n.preventDefault();const a=n.currentTarget.value;try{e.fillStyle=a,e.fillRect(0,0,f,m),o.requestFrame(),r.play()}catch(d){alert(`Error updating test video:
 
 ${d}`)}})};(async()=>{try{await y()}catch(r){alert(`Error initializing application:
 
